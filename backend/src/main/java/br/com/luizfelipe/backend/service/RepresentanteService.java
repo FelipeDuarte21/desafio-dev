@@ -20,14 +20,21 @@ public class RepresentanteService implements AcoesService<RepresentanteEntity> {
 
 	@Override
 	public RepresentanteEntity salvar(RepresentanteEntity representanteEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		var optRepresentanteEntity = this.representanteRepository.findByNome(representanteEntity.getNome());
+		
+		if(optRepresentanteEntity.isPresent())
+			throw new IllegalArgumentException("Erro! representante já cadastrado!");
+		
+		return this.representanteRepository.save(representanteEntity);
+		
 	}
 
 	@Override
 	public Optional<RepresentanteEntity> buscar(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.representanteRepository.findByNome(nome);
+		
 	}
 
 }
