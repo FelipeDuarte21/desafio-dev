@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.support.MultipartFilter;
 
+import br.com.luizfelipe.backend.dto.LojaDTO;
+
 @Service
 public class APIService {
 
