@@ -20,14 +20,21 @@ public class BeneficiarioService implements AcoesService<BeneficiarioEntity> {
 
 	@Override
 	public BeneficiarioEntity salvar(BeneficiarioEntity beneficiarioEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		var optBeneficiarioEntity = this.beneficiarioRepository.findByCpf(beneficiarioEntity.getCpf());
+		
+		if(optBeneficiarioEntity.isPresent())
+			throw new IllegalArgumentException("Erro! beneficiário já foi cadastrado!");
+		
+		return this.beneficiarioRepository.save(beneficiarioEntity);
+		
 	}
 
 	@Override
 	public Optional<BeneficiarioEntity> buscar(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.beneficiarioRepository.findByCpf(cpf);
+		
 	}
 	
 }
