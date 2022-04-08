@@ -18,14 +18,21 @@ public class CartaoService implements AcoesService<CartaoEntity> {
 
 	@Override
 	public CartaoEntity salvar(CartaoEntity cartaoEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		var optCartaoEntity = this.cartaoRepository.findByNumero(cartaoEntity.getNumero());
+		
+		if(optCartaoEntity.isPresent())
+			throw new IllegalArgumentException("Erro! cartão já cadastrado!");
+		
+		return this.cartaoRepository.save(cartaoEntity);
+		
 	}
 
 	@Override
 	public Optional<CartaoEntity> buscar(String numero) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.cartaoRepository.findByNumero(numero);
+		
 	}
 
 }
