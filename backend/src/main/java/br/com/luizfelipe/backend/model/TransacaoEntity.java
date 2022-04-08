@@ -42,9 +42,8 @@ public class TransacaoEntity implements Serializable{
 	@JoinColumn(name = "id_beneficiario")
 	private BeneficiarioEntity beneficiario;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_tipo_transacao")
-	private TipoTransacaoEntity tipoTransacao;
+	@Column(name = "tipo_operacao")
+	private Integer tipoOperacao;
 
 	public TransacaoEntity() {
 		
@@ -103,12 +102,12 @@ public class TransacaoEntity implements Serializable{
 		this.beneficiario = beneficiario;
 	}
 
-	public TipoTransacaoEntity getTipoTransacao() {
-		return tipoTransacao;
+	public Integer getTipoOperacao() {
+		return tipoOperacao;
 	}
 
-	public void setTipoTransacao(TipoTransacaoEntity tipoTransacao) {
-		this.tipoTransacao = tipoTransacao;
+	public void setTipoOperacao(Integer tipoOperacao) {
+		this.tipoOperacao = tipoOperacao;
 	}
 
 	@Override
