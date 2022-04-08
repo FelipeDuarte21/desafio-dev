@@ -13,22 +13,29 @@ public class TransacaoService implements AcoesService<TransacaoEntity> {
 	
 	private TransacaoRepository transacaoRepository;
 	
+	private LojaService lojaService;
+	
 	@Autowired
-	public TransacaoService(TransacaoRepository transacaoRepository, RepresentanteService representanteService,
-			LojaService lojaService, CartaoService cartaoService, BeneficiarioService beneficiarioService) {
+	public TransacaoService(TransacaoRepository transacaoRepository, LojaService lojaService) {
 		this.transacaoRepository = transacaoRepository;
+		this.lojaService = lojaService;
 	}
 
 	@Override
 	public TransacaoEntity salvar(TransacaoEntity transacaoEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		transacaoEntity = this.transacaoRepository.save(transacaoEntity);
+		
+		this.lojaService.atualizaSaldo(transacaoEntity.getLoja());
+		
+		return transacaoEntity;
+		
 	}
 
 	
+	//Método não é utilizado!!
 	@Override
 	public Optional<TransacaoEntity> buscar(String atributo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

@@ -37,4 +37,8 @@ public class LojaService implements AcoesService<LojaEntity> {
 		
 	}
 	
+	public void atualizaSaldo(LojaEntity lojaEntity) {
+		//implementar
+	}
+	
 }
