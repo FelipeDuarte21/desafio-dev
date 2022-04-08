@@ -20,14 +20,21 @@ public class LojaService implements AcoesService<LojaEntity> {
 
 	@Override
 	public LojaEntity salvar(LojaEntity lojaEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		var optLojaEntity = this.lojaRepository.findByNome(lojaEntity.getNome());
+		
+		if(optLojaEntity.isPresent())
+			throw new IllegalArgumentException("Erro! loja já está cadastrada!");
+		
+		return this.lojaRepository.save(lojaEntity);
+		
 	}
 
 	@Override
 	public Optional<LojaEntity> buscar(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.lojaRepository.findByNome(nome);
+		
 	}
 	
 }
