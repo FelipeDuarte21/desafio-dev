@@ -1,6 +1,7 @@
 package br.com.luizfelipe.backend.service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,12 @@ public class LojaService implements AcoesService<LojaEntity> {
 		lojaEntity.atualizaSaldo(saldo);
 		
 		this.lojaRepository.save(lojaEntity);
+		
+	}
+	
+	public List<LojaEntity> listarLojas(){
+		
+		return this.lojaRepository.findAll();
 		
 	}
 	

@@ -1,6 +1,7 @@
 package br.com.luizfelipe.backend.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,9 @@ public class APIService {
 	}
 	
 	public List<LojaDTO> listarLojas(){
-		return null; //implementar
+		
+		return this.lojaService.listarLojas().stream().map(LojaDTO::new).collect(Collectors.toList());
+		
 	}
 	
 }
