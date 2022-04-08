@@ -1,11 +1,15 @@
 package br.com.luizfelipe.backend.service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.luizfelipe.backend.enums.NaturezaTransacaoEnum;
+import br.com.luizfelipe.backend.enums.TipoTransacaoEnum;
 import br.com.luizfelipe.backend.model.LojaEntity;
+import br.com.luizfelipe.backend.model.TransacaoEntity;
 import br.com.luizfelipe.backend.repository.LojaRepository;
 
 @Service
@@ -38,7 +42,32 @@ public class LojaService implements AcoesService<LojaEntity> {
 	}
 	
 	public void atualizaSaldo(LojaEntity lojaEntity) {
-		//implementar
+		
+		BigDecimal entrada = new BigDecimal("0");
+		BigDecimal saida = new BigDecimal("0");
+	
+		for(TransacaoEntity transacao: lojaEntity.getTransacoes()) {
+			
+			String sinal = TipoTransacaoEnum.toEnum(transacao.getTipoOperacao()).getNatureza().getSinal();
+			
+			if(sinal.equals(NaturezaTransacaoEnum.ENTRADA.getSinal())) {
+				entrada = entrada.add(transacao.getValor());
+				continue;
+			}
+			
+			if(sinal.equals(NaturezaTransacaoEnum.SAIDA.getSinal())) {
+				saida = saida.add(transacao.getValor());
+			}
+			
+		}
+		
+		BigDecimal saldo = new BigDecimal("0");
+		saldo = saldo.add(lojaEntity.getConta().getSaldo()).add(entrada).subtract(saida);
+		
+		lojaEntity.atualizaSaldo(saldo);
+		
+		this.lojaRepository.save(lojaEntity);
+		
 	}
 	
 }

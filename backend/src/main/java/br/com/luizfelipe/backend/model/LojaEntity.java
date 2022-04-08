@@ -1,6 +1,7 @@
 package br.com.luizfelipe.backend.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -84,6 +85,10 @@ public class LojaEntity implements Serializable {
 
 	public void setConta(ContaEntity conta) {
 		this.conta = conta;
+	}
+	
+	public void atualizaSaldo(BigDecimal saldo) {
+		this.conta.setSaldo(saldo);
 	}
 
 	@Override
