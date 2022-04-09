@@ -1,28 +1,78 @@
-<h2>Lista Por Lojas</h2>
+<div class="row justify-content-center mb-3">
 
-<div *ngFor="let loja of lojas">
-    <h4>Loja: </h4><span>{{loja?.nome}}</span>
-    <h4>Representante: </h4><span>{{loja?.representante.nome}}</span>
-    <h4>Saldo: </h4><span>{{loja?.conta.saldo | currency: 'BRL'}}</span>
-    <h4>Transações:</h4>
-    <table>
-        <thead>
-            <tr>
-                <th>Data/Hora</th>
-                <th>Valor</th>
-                <th>Tipo/Natureza</th>
-                <th>Cartão</th>
-                <th>Beneficiário</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let transacao of loja?.transacoes">
-                <td>{{transacao?.dataHora | date:'dd/MM/yyyy HH:mm:ss'}}</td>
-                <td>{{transacao?.valor | currency: 'BRL'}}</td>
-                <td>{{transacao?.tipoTransacao.tipo}} - {{transacao?.tipoTransacao.natureza}}</td>
-                <td>{{transacao?.cartao.numero}}</td>
-                <td>{{transacao?.beneficiario.cpf}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="col-11 col-md-10">
+        <p class="fs-4 text-center"><i class="fa-solid fa-store me-1"></i>Lojas</p>
+    </div>
+
+    <div class="col-11 col-md-10">
+
+        <div class="card lateral-card mt-3" *ngFor="let loja of lojas">
+
+            <div class="card-body">
+
+                <div class="row mt-2 mb-3">
+
+                    <div class="col-12 col-md-4 text-start text-start">
+                        <h5 class="mb-0"><i class="fa-solid fa-sack-dollar me-1"></i>Saldo:</h5>
+                        <ng-container *ngIf="loja?.conta.saldo < 0">
+                            <span class="text-danger">{{loja?.conta.saldo | currency: 'BRL'}}</span>
+                        </ng-container>
+                        <ng-container *ngIf="loja?.conta.saldo == 0">
+                            <span>{{loja?.conta.saldo | currency: 'BRL'}}</span>
+                        </ng-container>
+                        <ng-container *ngIf="loja?.conta.saldo > 0">
+                            <span class="text-success">{{loja?.conta.saldo | currency: 'BRL'}}</span>
+                        </ng-container>
+                    </div>
+
+                    <div class="col-12 mt-2 mt-md-0 col-md-4 text-start  text-md-center">
+                        <h5 class="mb-0"><i class="fa-solid fa-store me-1"></i>Loja:</h5>{{loja?.nome}}
+                    </div>
+
+                    <div class="col-12 mt-2 mt-md-0 col-md-4 text-start  text-md-end">
+                        <h5 class="mb-0"><i class="fa-solid fa-user me-1"></i>Representante:</h5>{{loja?.representante.nome}}
+                    </div>
+                    
+                </div>
+
+                <h5 class="mt-4 mb-4 text-center"><i class="fa-solid fa-money-bill-transfer me-1"></i>Transações:</h5>
+
+                <div class="table-responsive">
+                    <table class="table table-striped mb-3 nao-quebra-tabela">
+                        <thead>
+                            <tr>
+                                <th><i class="fa-solid fa-arrows-up-down me-1"></i>Natureza</th>
+                                <th><i class="fa-solid fa-clock me-1"></i>Data/Hora</th>
+                                <th><i class="fa-solid fa-dollar-sign me-1"></i>Valor</th>
+                                <th><i class="fa-solid fa-tag me-1"></i>Tipo</th>
+                                <th><i class="fa-solid fa-credit-card me-1"></i>Cartão</th>
+                                <th><i class="fa-solid fa-user me-1"></i>Beneficiário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transacao of loja?.transacoes">
+                                <td>
+                                    <ng-container *ngIf="transacao?.tipoTransacao.natureza == 'Entrada'">
+                                        <span class="text-success">{{transacao?.tipoTransacao.natureza}}</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="transacao?.tipoTransacao.natureza == 'Saída'">
+                                        <span class="text-danger">{{transacao?.tipoTransacao.natureza}}</span>
+                                    </ng-container>
+                                </td>
+                                <td>{{transacao?.dataHora | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                                <td>{{transacao?.valor | currency: 'BRL'}}</td>
+                                <td>{{transacao?.tipoTransacao.tipo}}</td>
+                                <td>{{transacao?.cartao.numero}}</td>
+                                <td>{{transacao?.beneficiario.cpf | cpf}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>

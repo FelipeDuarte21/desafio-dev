@@ -1,5 +1,3 @@
-<div class="container">
-    <h1 class="texto-centro">Sistema de Leitor de dados CNAB</h1>
-    <app-input (eventoLoadArquivo)="onEventoLoadArquivo($event)" ></app-input>
-    <lista [lojas]="lojas" ></lista>
-</div>
+<p class="fs-3 mt-3 text-center"><i class="fa-solid fa-file-import me-1"></i>Sistema leitor de arquivo CNAB</p>
+<app-input (eventoLoadArquivo)="onEventoLoadArquivo($event)" ></app-input>
+<lista [lojas]="lojas"></lista>
