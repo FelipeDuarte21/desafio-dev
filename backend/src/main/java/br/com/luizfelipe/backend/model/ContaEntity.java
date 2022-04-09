@@ -29,7 +29,7 @@ public class ContaEntity implements Serializable {
 	private LojaEntity loja;
 	
 	public ContaEntity() {
-		
+		this.saldo = new BigDecimal("0");
 	}
 
 	public Long getId() {

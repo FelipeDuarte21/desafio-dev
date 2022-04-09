@@ -90,6 +90,10 @@ public class LojaEntity implements Serializable {
 	public void atualizaSaldo(BigDecimal saldo) {
 		this.conta.setSaldo(saldo);
 	}
+	
+	public void addTransacao(TransacaoEntity transacao) {
+		this.transacoes.add(transacao);
+	}
 
 	@Override
 	public int hashCode() {
