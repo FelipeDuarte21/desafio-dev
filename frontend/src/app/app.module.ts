@@ -9,6 +9,7 @@ import { ListaComponent } from './lista/lista.component';
 import { registerLocaleData } from '@angular/common';
 import { CpfPipe } from './cpf.pipe';
 import { SpinnerModule } from './spinners/spinner.module';
+import { AlertasModule } from './alertas/alertas.module';
 
 registerLocaleData(ptBr);
 
@@ -22,7 +23,8 @@ registerLocaleData(ptBr);
 	imports: [
 		BrowserModule,
 		HttpClientModule,
-		SpinnerModule
+		SpinnerModule,
+		AlertasModule
 	],
 	providers: [
 		{

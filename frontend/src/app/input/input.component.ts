@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from "@angular/core";
+import { AlertasService } from "../alertas/alertas.service";
 import { AppService } from "../app.service";
 import { Loja } from "../modelos/modelos.model";
 import { SpinnerService } from "../spinners/spinner.service";
@@ -12,9 +13,13 @@ export class InputComponent{
 
     @Output() eventoLoadArquivo: EventEmitter<Loja[]> = new EventEmitter;
 
+    @ViewChild('inputFile')
+    public inputFile: ElementRef;
+
     constructor(
         private appService: AppService,
-        private spinnerService: SpinnerService
+        private spinnerService: SpinnerService,
+        private alertaService: AlertasService
     ){}
 
     public onChangeFile(evento: any){
@@ -32,8 +37,13 @@ export class InputComponent{
             this.appService.uploadArquivo(formData).subscribe(
                 sucesso => {
                     this.buscarListaDeLojas();
+                    this.inputFile.nativeElement.value = '';
+                    this.spinnerService.desativarSpinner();
                 },
                 error => {
+                    this.inputFile.nativeElement.value = '';
+                    this.spinnerService.desativarSpinner();
+                    this.alertaService.alertaErro(error.error.message);
                     console.log(error);
                 }
             );
@@ -44,15 +54,13 @@ export class InputComponent{
 
     private buscarListaDeLojas(){
 
-        this.spinnerService.ativarSpinner();
-
         this.appService.listarLojas().subscribe(
             lojas => {
                 this.eventoLoadArquivo.emit(lojas);
-                this.spinnerService.desativarSpinner();
             },
             error => {
                 console.log(error);
+                this.eventoLoadArquivo.emit([]);
             }
         );
 
