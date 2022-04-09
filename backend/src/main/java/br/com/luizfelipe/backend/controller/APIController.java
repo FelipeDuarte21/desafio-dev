@@ -3,6 +3,7 @@ package br.com.luizfelipe.backend.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import br.com.luizfelipe.backend.controller.exception.ObjectBadRequestException;
 import br.com.luizfelipe.backend.dto.LojaDTO;
 import br.com.luizfelipe.backend.service.APIService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "sistema-cnab/api/v1/")
 public class APIController {
