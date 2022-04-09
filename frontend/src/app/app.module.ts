@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,7 +13,8 @@ import { ListaComponent } from './lista/lista.component';
 		ListaComponent
 	],
 	imports: [
-		BrowserModule
+		BrowserModule,
+		HttpClientModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
