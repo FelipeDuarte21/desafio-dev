@@ -8,6 +8,7 @@ import { InputComponent } from './input/input.component';
 import { ListaComponent } from './lista/lista.component';
 import { registerLocaleData } from '@angular/common';
 import { CpfPipe } from './cpf.pipe';
+import { SpinnerModule } from './spinners/spinner.module';
 
 registerLocaleData(ptBr);
 
@@ -20,7 +21,8 @@ registerLocaleData(ptBr);
 	],
 	imports: [
 		BrowserModule,
-		HttpClientModule
+		HttpClientModule,
+		SpinnerModule
 	],
 	providers: [
 		{

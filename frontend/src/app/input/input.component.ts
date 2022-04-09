@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { AppService } from "../app.service";
 import { Loja } from "../modelos/modelos.model";
+import { SpinnerService } from "../spinners/spinner.service";
 
 @Component({
     selector: 'app-input',
@@ -12,10 +13,13 @@ export class InputComponent{
     @Output() eventoLoadArquivo: EventEmitter<Loja[]> = new EventEmitter;
 
     constructor(
-        private appService: AppService
+        private appService: AppService,
+        private spinnerService: SpinnerService
     ){}
 
     public onChangeFile(evento: any){
+
+        this.spinnerService.ativarSpinner();
 
         if(evento.target.files && evento.target.files[0]){
 
@@ -27,9 +31,7 @@ export class InputComponent{
 
             this.appService.uploadArquivo(formData).subscribe(
                 sucesso => {
-                    
                     this.buscarListaDeLojas();
-
                 },
                 error => {
                     console.log(error);
@@ -42,9 +44,12 @@ export class InputComponent{
 
     private buscarListaDeLojas(){
 
+        this.spinnerService.ativarSpinner();
+
         this.appService.listarLojas().subscribe(
             lojas => {
                 this.eventoLoadArquivo.emit(lojas);
+                this.spinnerService.desativarSpinner();
             },
             error => {
                 console.log(error);
