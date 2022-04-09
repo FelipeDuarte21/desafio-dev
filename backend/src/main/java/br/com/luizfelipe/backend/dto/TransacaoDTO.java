@@ -11,7 +11,7 @@ public class TransacaoDTO {
 	private Long id;
 	private LocalDateTime dataHora;
 	private BigDecimal valor;
-	private String tipoOperacao;
+	private TipoTransacaoDTO tipoTransacao;
 	private BeneficiarioDTO beneficiario;
 	private CartaoDTO cartao;
 	
@@ -23,7 +23,9 @@ public class TransacaoDTO {
 		this.id = transacaoEntity.getId();
 		this.dataHora = transacaoEntity.getDataHora();
 		this.valor = transacaoEntity.getValor();
-		this.tipoOperacao = TipoTransacaoEnum.toEnum(transacaoEntity.getTipoOperacao()).getDescricao();
+		this.tipoTransacao = new TipoTransacaoDTO(
+				TipoTransacaoEnum.toEnum(transacaoEntity.getTipoOperacao()).getDescricao(),
+				TipoTransacaoEnum.toEnum(transacaoEntity.getTipoOperacao()).getNatureza().getNatureza());
 		this.beneficiario = new BeneficiarioDTO(transacaoEntity.getBeneficiario());
 		this.cartao = new CartaoDTO(transacaoEntity.getCartao());
 	}
@@ -52,12 +54,12 @@ public class TransacaoDTO {
 		this.valor = valor;
 	}
 
-	public String getTipoOperacao() {
-		return tipoOperacao;
+	public TipoTransacaoDTO getTipoTransacao() {
+		return tipoTransacao;
 	}
 
-	public void setTipoOperacao(String tipoOperacao) {
-		this.tipoOperacao = tipoOperacao;
+	public void setTipoTransacao(TipoTransacaoDTO tipoTransacao) {
+		this.tipoTransacao = tipoTransacao;
 	}
 
 	public BeneficiarioDTO getBeneficiario() {
