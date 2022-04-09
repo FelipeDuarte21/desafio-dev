@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Loja } from './modelos/modelos.model';
 
 @Component({
 	selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'frontend';
+
+	public lojas: Loja[] = []
+	
+	onEventoLoadArquivo(lojas: Loja[]){
+		this.lojas = lojas;
+	}
+
 }
