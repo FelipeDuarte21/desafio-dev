@@ -63,7 +63,7 @@ public class LojaService implements AcoesService<LojaEntity> {
 		}
 		
 		BigDecimal saldo = new BigDecimal("0");
-		saldo = saldo.add(lojaEntity.getConta().getSaldo()).add(entrada).subtract(saida);
+		saldo = saldo.add(entrada).subtract(saida);
 		
 		lojaEntity.atualizaSaldo(saldo);
 		
