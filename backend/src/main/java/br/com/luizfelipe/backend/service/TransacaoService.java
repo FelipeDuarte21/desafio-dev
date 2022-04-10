@@ -15,20 +15,15 @@ public class TransacaoService implements AcoesService<TransacaoEntity> {
 	
 	private TransacaoRepository transacaoRepository;
 	
-	private LojaService lojaService;
-	
 	@Autowired
-	public TransacaoService(TransacaoRepository transacaoRepository, LojaService lojaService) {
+	public TransacaoService(TransacaoRepository transacaoRepository) {
 		this.transacaoRepository = transacaoRepository;
-		this.lojaService = lojaService;
 	}
 
 	@Override
 	public TransacaoEntity salvar(TransacaoEntity transacaoEntity) {
 		
 		transacaoEntity = this.transacaoRepository.save(transacaoEntity);
-		
-		this.lojaService.atualizaSaldo(transacaoEntity.getLoja());
 		
 		return transacaoEntity;
 		

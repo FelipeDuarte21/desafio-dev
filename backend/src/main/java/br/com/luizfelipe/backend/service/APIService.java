@@ -74,6 +74,8 @@ public class APIService {
 			
 			this.transacaoService.salvar(transacao);
 			
+			this.lojaService.atualizaSaldo(loja);
+			
 		});
 		
 	}
