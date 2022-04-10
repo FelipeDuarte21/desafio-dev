@@ -73,7 +73,7 @@ public class LojaService implements AcoesService<LojaEntity> {
 	
 	public List<LojaEntity> listarLojas(){
 		
-		return this.lojaRepository.findAll();
+		return this.lojaRepository.findAllByOrderByNomeAsc();
 		
 	}
 	

@@ -134,7 +134,13 @@ public class APIService {
 	
 	public List<LojaDTO> listarLojas(){
 		
-		return this.lojaService.listarLojas().stream().map(LojaDTO::new).collect(Collectors.toList());
+		var listaLojas = this.lojaService.listarLojas();
+		
+		listaLojas.forEach(loja -> {
+			loja.setTransacoes(this.transacaoService.buscarPorLoja(loja));
+		});
+		
+		return listaLojas.stream().map(LojaDTO::new).collect(Collectors.toList());
 		
 	}
 	

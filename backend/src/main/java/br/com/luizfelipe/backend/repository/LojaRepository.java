@@ -1,5 +1,6 @@
 package br.com.luizfelipe.backend.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,7 @@ import br.com.luizfelipe.backend.model.LojaEntity;
 public interface LojaRepository extends JpaRepository<LojaEntity, Long>{
 	
 	Optional<LojaEntity> findByNome(String nome);
+	
+	List<LojaEntity> findAllByOrderByNomeAsc();
 	
 }

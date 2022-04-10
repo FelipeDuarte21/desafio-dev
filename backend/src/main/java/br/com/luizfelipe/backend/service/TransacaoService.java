@@ -1,10 +1,12 @@
 package br.com.luizfelipe.backend.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.luizfelipe.backend.model.LojaEntity;
 import br.com.luizfelipe.backend.model.TransacaoEntity;
 import br.com.luizfelipe.backend.repository.TransacaoRepository;
 
@@ -39,5 +41,10 @@ public class TransacaoService implements AcoesService<TransacaoEntity> {
 		return null;
 	}
 	
+	public List<TransacaoEntity> buscarPorLoja(LojaEntity loja){
+		
+		return this.transacaoRepository.findByLojaOrderByDataHoraDesc(loja);
+		
+	}
 
 }
