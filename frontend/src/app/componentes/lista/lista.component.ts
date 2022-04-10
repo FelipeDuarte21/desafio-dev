@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { AppService } from "../app.service";
-import { Loja } from "../modelos/modelos.model";
-import { SpinnerService } from "../spinners/spinner.service";
+import { AppService } from "src/app/app.service";
+import { SpinnerService } from "src/app/compartilhados/spinners/spinner.service";
+import { Loja } from "src/app/modelos/modelos.model";
+
+
 
 @Component({
     selector: 'lista',

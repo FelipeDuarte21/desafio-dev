@@ -17,7 +17,7 @@
                         <span>{{loja?.conta.saldo | currency: 'BRL'}}</span>
                     </ng-container>
                     <ng-container *ngIf="loja?.conta.saldo > 0">
-                        <span class="text-success">{{loja?.conta.saldo | currency: 'BRL'}}</span>
+                        <span class="text-primary">{{loja?.conta.saldo | currency: 'BRL'}}</span>
                     </ng-container>
                 </div>
 
@@ -50,7 +50,7 @@
                         <tr *ngFor="let transacao of loja?.transacoes">
                             <td>
                                 <ng-container *ngIf="transacao?.tipoTransacao.natureza == 'Entrada'">
-                                    <span class="text-success">{{transacao?.tipoTransacao.natureza}}</span>
+                                    <span class="text-primary">{{transacao?.tipoTransacao.natureza}}</span>
                                 </ng-container>
                                 <ng-container *ngIf="transacao?.tipoTransacao.natureza == 'Saída'">
                                     <span class="text-danger">{{transacao?.tipoTransacao.natureza}}</span>
@@ -69,7 +69,5 @@
         </div>
 
     </div>
-
-
 
 </ng-container>

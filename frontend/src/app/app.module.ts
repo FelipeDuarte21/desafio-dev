@@ -4,12 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import ptBr from '@angular/common/locales/pt';
 import { AppComponent } from './app.component';
-import { InputComponent } from './input/input.component';
-import { ListaComponent } from './lista/lista.component';
+import { InputComponent } from './componentes/input/input.component';
+
 import { registerLocaleData } from '@angular/common';
 import { CpfPipe } from './cpf.pipe';
-import { SpinnerModule } from './spinners/spinner.module';
-import { AlertasModule } from './alertas/alertas.module';
+import { SpinnerModule } from './compartilhados/spinners/spinner.module';
+import { AlertasModule } from './compartilhados/alertas/alertas.module';
+import { ListaComponent } from './componentes/lista/lista.component';
 
 registerLocaleData(ptBr);
 

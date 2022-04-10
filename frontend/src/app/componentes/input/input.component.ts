@@ -1,8 +1,9 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from "@angular/core";
-import { AlertasService } from "../alertas/alertas.service";
-import { AppService } from "../app.service";
-import { Loja } from "../modelos/modelos.model";
-import { SpinnerService } from "../spinners/spinner.service";
+import { AppService } from "../../app.service";
+import { AlertasService } from "../../compartilhados/alertas/alertas.service";
+import { SpinnerService } from "../../compartilhados/spinners/spinner.service";
+import { Loja } from "../../modelos/modelos.model";
+
 
 @Component({
     selector: 'app-input',
