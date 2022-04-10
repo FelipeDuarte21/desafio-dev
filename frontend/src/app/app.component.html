@@ -1,9 +1,9 @@
 <spinner></spinner>
-<p class="fs-3 mt-3 text-center"><i class="fa-solid fa-file-import me-1"></i>Sistema leitor de arquivo CNAB</p>
-<div class="row justify-content-center">
+<div class="row mb-5 justify-content-center">
     <div class="col-11 col-md-10">
+        <p class="fs-3 mt-3 text-center"><i class="fa-solid fa-file-import me-1"></i>Sistema leitor de arquivo CNAB</p>
         <alertas></alertas>
+        <app-input (eventoLoadArquivo)="onEventoLoadArquivo($event)"></app-input>
+        <lista [lojas]="lojas"></lista>
     </div>
 </div>
-<app-input (eventoLoadArquivo)="onEventoLoadArquivo($event)" ></app-input>
-<lista [lojas]="lojas"></lista>
