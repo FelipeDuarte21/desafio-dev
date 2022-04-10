@@ -14,7 +14,7 @@
 	<name>backend</name>
 	<description>API do Sistema de Leitura de Arquivo CNAB</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,6 +64,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>apiCNAB</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
