@@ -17,11 +17,9 @@ public class ArquivoUtil {
 	
 	public List<Map<String,String>> obterDadosAPartirDeArquivo(MultipartFile arquivoCNAB) {
 		
-		if(!arquivoCNAB.getContentType().equals("text/plain"))
-			throw new IllegalArgumentException("Erro! formato de arquivo não aceito!");
+		verificarContentType(arquivoCNAB.getContentType());
 		
-		if(!arquivoCNAB.getOriginalFilename().endsWith(".txt"))
-			throw new IllegalArgumentException("Erro! formato de arquivo não aceito!");
+		verificarExtensao(arquivoCNAB.getOriginalFilename());
 		
 		var listaDeDados = new ArrayList<Map<String,String>>();
 		
@@ -36,55 +34,34 @@ public class ArquivoUtil {
 			String line = buffered.readLine();
 			while(line != null) {
 				
-				if(line.length() != 80)
-					throw new IllegalArgumentException("Erro! linha no arquivo não tem 80 caracteres!");
+				verificarLinha(line);
 				
 				var dados = new HashMap<String,String>();
 				
 				String tipo = line.substring(0,1);
+				String data = line.substring(1,9);
+				String valor = line.substring(9,19);
+				String cpfBeneficiario = line.substring(19,30);
+				String numeroCartao = line.substring(30,42);
+				String hora = line.substring(42,48);
+				String representante = line.substring(48,62).trim();
+				String loja = line.substring(62).trim();
 				
-				if(!tipo.matches("\\d{1}"))
-					throw new IllegalArgumentException("Erro! tipo da transação é inválido!");
+				verificarTipo(tipo);
+				verificarData(data);
+				verificarValor(valor);
+				verificarCpfBeneficiario(cpfBeneficiario);
+				verificarNumeroCartao(numeroCartao);
+				verificarHora(hora);
 				
 				dados.put("tipo", tipo);
-				
-				String data = line.substring(1,9);
-				
-				if(!data.matches("\\d{8}"))
-					throw new IllegalArgumentException("Erro! data da transação é inválida!");
-				
 				dados.put("data", data);
-				
-				String valor = line.substring(9,19);
-				
-				if(!valor.matches("\\d{10}"))
-					throw new IllegalArgumentException("Erro! valor da transação é inválido!");
-				
 				dados.put("valor", valor);
-				
-				String cpfBeneficiario = line.substring(19,30);
-				
-				if(!cpfBeneficiario.matches("\\d{11}"))
-					throw new IllegalArgumentException("Erro! cpf do beneficiário está inválido!");
-				
 				dados.put("cpfBeneficiario", cpfBeneficiario);
-				
-				String numeroCartao = line.substring(30,42);
-				
-				if(!numeroCartao.matches("\\d{4}\\*\\*\\*\\*\\d{4}"))
-					throw new IllegalArgumentException("Erro! numero do cartão é inválido!");
-				
 				dados.put("numeroCartao", numeroCartao);
-				
-				String hora = line.substring(42,48);
-				
-				if(!hora.matches("\\d{6}"))
-					throw new IllegalArgumentException("Erro! hora está inválida!");
-				
 				dados.put("hora", hora);
-				
-				dados.put("representante", line.substring(48,62).trim());
-				dados.put("loja", line.substring(62).trim());
+				dados.put("representante", representante);
+				dados.put("loja", loja);
 				
 				listaDeDados.add(dados);
 				
@@ -110,6 +87,87 @@ public class ArquivoUtil {
 		}
 		
 		return listaDeDados;
+		
+	}
+	
+	public boolean verificarContentType(String contentType) {
+		
+		if(!"text/plain".equals(contentType))
+			throw new IllegalArgumentException("Erro! formato de arquivo não aceito!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarExtensao(String nomeArquivo) {
+		
+		if(!nomeArquivo.endsWith(".txt"))
+			throw new IllegalArgumentException("Erro! formato de arquivo não aceito!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarLinha(String linha) {
+		
+		if(linha.length() != 80)
+			throw new IllegalArgumentException("Erro! linha no arquivo não tem 80 caracteres!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarTipo(String tipo) {
+		
+		if(!tipo.matches("\\d{1}"))
+			throw new IllegalArgumentException("Erro! tipo da transação é inválido!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarData(String data) {
+		
+		if(!data.matches("\\d{8}"))
+			throw new IllegalArgumentException("Erro! data da transação é inválida!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarValor(String valor) {
+		
+		if(!valor.matches("\\d{10}"))
+			throw new IllegalArgumentException("Erro! valor da transação é inválido!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarCpfBeneficiario(String cpf) {
+		
+		if(!cpf.matches("\\d{11}"))
+			throw new IllegalArgumentException("Erro! cpf do beneficiário está inválido!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarNumeroCartao(String numero) {
+		
+		if(!numero.matches("\\d{4}\\*\\*\\*\\*\\d{4}"))
+			throw new IllegalArgumentException("Erro! numero do cartão é inválido!");
+		
+		return true;
+		
+	}
+	
+	public boolean verificarHora(String hora) {
+		
+		if(!hora.matches("\\d{6}"))
+			throw new IllegalArgumentException("Erro! hora está inválida!");
+		
+		return true;
 		
 	}
 	
