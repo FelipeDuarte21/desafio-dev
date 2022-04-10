@@ -26,6 +26,7 @@ export class ListaComponent implements OnInit{
             },
             error => {
                 console.log(error);
+                this.spinnerService.desativarSpinner();
             }
         );
     }
