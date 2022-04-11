@@ -1,27 +1,19 @@
-# Frontend
+# Sistema Leitor de Arquivos CNAB
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+O sistema leitor de arquivo CNAB permite fazer o upload dos dados CNAB para uma base de dados e, além disso, apresenta uma tela amigável para que o usuario possa visualizar os dados com mais clareza. No sistema basicamente, o usuario escolhe um arquivo através de formulario e na sequência o sistema apresenta os dados contidos no arquivo. Um arquivo CNAB contém dados das movimentações finanaceira de várias lojas.
 
-## Development server
+# Montando o Ambiente Localmente
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Primeiramente baixe esse repositório em sua máquina. A arquitetura do sistema se divide em duas partes: O Backend, onde uma API faz a parte de toda lógica para o processamento dos dados; O FrontEnd onde estão as telas do sistema e onde são apresentados os dados já processados. A seguir instruções para rodar o backend e o frontend na sua máquina.
 
-## Code scaffolding
+## Rodando Localmente o FrontEnd
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### O Que Preciso? 
+Você vai precisar ter instalado na sua máquina o NODE versão 14.16.0 ou superior, você pode encontrar nesse [link](https://nodejs.org/en/)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Instruções.
+Com o repositório já na sua máquina, abra o terminal do seu sistema operacional e vá até dentro da pasta frontend do projeto, e rode os seguintes comandos nessa ordem:
+1. npm install
+2. npm start
+Se der tudo certo (creio que sim :) ) aparecerá uma mensagem da seguinte forma: Servidor iniciado na porta 4200 - Sistema Leitor de Arquivo CNAB.
+Pronto o frontend já está rodando localmente.
