@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,6 +44,7 @@ public class APIService {
 		this.arquivoUtil = arquivoUtil;
 	}
 	
+	@Transactional(rollbackOn = Exception.class)
 	public void salvarDadosDoArquivo(MultipartFile arquivoCNAB) {
 		
 		List<Map<String,String>> listaDados = this.arquivoUtil.obterDadosAPartirDeArquivo(arquivoCNAB);
