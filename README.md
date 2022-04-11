@@ -11,11 +11,15 @@ Primeiramente baixe esse repositório em sua máquina. A arquitetura do sistema 
 ### O Que Preciso?
 Você vai precisar ter instalado na sua máquina o banco de dados MySQL (Conhecer a porta, usuario e senha) e o JAVA na versão 17 ou superior. Você pode obter o MySQL nesse [link](https://www.mysql.com/) e o JAVA nesse [link](https://www.oracle.com/java/technologies/downloads/#java17). Caso já tenha o JAVA instalado verifique se a variável de ambiente JAVA_HOME aponta para versão 17 ou superior do Java.
 
-# Instruções ?
+### Instruções
 Antes de tudo, saiba a porta, usuario e senha do banco de dados MySQL que está instalado na sua máquina, feito isso abra o terminal do seu sistema operacional e vá até dentro da pasta backend do projeto e rode os seguintes comandos:
-1. mvn clean package
+
+1. mvn clean package.
+
 Após terminar esse processo ainda no mesmo terminal vá até a pasta target (ela está na raiz da pasta backend) e digite o seguinte comando, obs: substitua depois do igual pelo o que se pede:
-2. java -jar -DPORT=PORTA_DO_SEU_BANCO_DE_DADOS -DUSER=USUARIO_DO_SEU_BANCO_DE_DADOS -DPASSWORD=SENHA_DO_SEU_BANCO_DE_DADOS apiCNAB.jar
+
+2. java -jar -DPORT=PORTA_DO_SEU_BANCO_DE_DADOS -DUSER=USUARIO_DO_SEU_BANCO_DE_DADOS -DPASSWORD=SENHA_DO_SEU_BANCO_DE_DADOS apiCNAB.jar.
+
 Se der tudo certo, no final aparecerá uma mensagem dizendo que o servidor foi instanciado na porta 8080.
 Tudo pronto seu backend já está rodando.
 
@@ -24,16 +28,20 @@ Tudo pronto seu backend já está rodando.
 ### O Que Preciso? 
 Você vai precisar ter instalado na sua máquina o NODE versão 14.16.0 ou superior, você pode encontrar nesse [link](https://nodejs.org/en/)
 
-## Instruções.
+### Instruções.
 Com o repositório já na sua máquina, abra o terminal do seu sistema operacional e vá até dentro da pasta frontend do projeto, e rode os seguintes comandos nessa ordem:
-1. npm install
-2. npm start
+
+1. npm install.
+
+2. npm start.
+
 Se der tudo certo (creio que sim :) ) aparecerá uma mensagem da seguinte forma: Servidor iniciado na porta 4200 - Sistema Leitor de Arquivo CNAB.
+
 Pronto o frontend já está rodando localmente.
 
 Abra seu navegador no seguinte endereço: http://localhost:4200 e use e abuse do sistema!! :)
 
-## Não Gostei da Tela :( , Como Utilizo Só a API ?
+# Não Gostei da Tela :( , Como Utilizo Só a API ?
 
 Reposta muito simples, você pode consultar a documentação da API em: http://localhost:8080/swagger-ui.html. Você também pode utilizar API através do link acima. Existem dois endpoints um é para fazer upload do arquivo cnab e outro é para obter uma lista de lojas desses dados já processados. Obs: só pode consultar a documentação com o Backend rodando na sua máquina!
 

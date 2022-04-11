@@ -11,9 +11,13 @@ Primeiramente baixe esse repositório em sua máquina. A arquitetura do sistema 
 ### O Que Preciso? 
 Você vai precisar ter instalado na sua máquina o NODE versão 14.16.0 ou superior, você pode encontrar nesse [link](https://nodejs.org/en/)
 
-## Instruções.
+### Instruções.
 Com o repositório já na sua máquina, abra o terminal do seu sistema operacional e vá até dentro da pasta frontend do projeto, e rode os seguintes comandos nessa ordem:
-1. npm install
-2. npm start
+
+1. npm install.
+
+2. npm start.
+
 Se der tudo certo (creio que sim :) ) aparecerá uma mensagem da seguinte forma: Servidor iniciado na porta 4200 - Sistema Leitor de Arquivo CNAB.
+
 Pronto o frontend já está rodando localmente.
